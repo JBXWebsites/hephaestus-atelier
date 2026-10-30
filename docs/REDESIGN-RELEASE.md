@@ -41,4 +41,12 @@ The snapshot reviewed in `REDESIGN-VISUAL-REVIEW.md` preceded the final finish p
 
 ## Practical scope
 
-Verification uses Chrome, emulated screen sizes and touch, automated accessibility rules, and visual inspection. It is not a physical-device or assistive-technology certification. Public performance and deployment evidence are recorded below after the production release. Existing stateless records and device-local collections retain their documented semantics; no accounts, payment, or database were added.
+Verification uses Chrome, emulated screen sizes and touch, automated accessibility rules, and visual inspection. It is not a physical-device or assistive-technology certification. Existing stateless records and device-local collections retain their documented semantics; no accounts, payment, or database were added.
+
+## Production verification
+
+Application revision `7a82fc81a5d89812bb71793eb0f45bed80b21bc6` automatically deployed from GitHub main to Vercel deployment `dpl_A3AtP4K8mf5tJgyBB48GRr1gzBVA`, which reached READY and received the public alias [hephaestus-atelier.vercel.app](https://hephaestus-atelier.vercel.app). **All twenty browser tests passed against that public alias**, including actual creation, fresh-browser record opening, SVG download, logo navigation in both motion modes, and keyboard/touch operation. The eleven navigation tests also passed three consecutive local repetitions after test synchronization was corrected.
+
+Lighthouse 13.6.0, simulated mobile navigation on the public production alias: **97 performance, 100 accessibility, 100 best practices, 100 SEO**. FCP 0.9s; LCP 2.6s; total blocking time 20ms; CLS 0; speed index 1.4s. These are single-run lab measurements, not field guarantees. The fuller generated JSON is retained locally at `artifacts/lighthouse-redesign-public.json`; the compact release record is committed at `artifacts/redesign-verification.json`.
+
+This documentation-only release record follows the tested application revision; it changes no runtime source.

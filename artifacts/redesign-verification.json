@@ -1,0 +1,24 @@
+{
+  "dateUTC": "2026-10-30",
+  "applicationCommit": "7a82fc81a5d89812bb71793eb0f45bed80b21bc6",
+  "deployment": "dpl_A3AtP4K8mf5tJgyBB48GRr1gzBVA",
+  "url": "https://hephaestus-atelier.vercel.app",
+  "productionBrowserTests": { "passed": 20, "failed": 0 },
+  "backendTests": { "passed": 11, "failed": 0 },
+  "repeatedLocalNavigationTests": { "passed": 33, "failed": 0 },
+  "build": "passed",
+  "typecheck": "passed",
+  "catalogReviewFindings": 0,
+  "mobileLighthouse": {
+    "performance": 97,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100,
+    "firstContentfulPaintSeconds": 0.9,
+    "largestContentfulPaintSeconds": 2.6,
+    "totalBlockingTimeMilliseconds": 20,
+    "cumulativeLayoutShift": 0,
+    "speedIndexSeconds": 1.4,
+    "qualification": "Single lab navigation run, not field measurements or accessibility certification."
+  }
+}
