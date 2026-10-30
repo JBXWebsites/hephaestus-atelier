@@ -1,0 +1,16 @@
+node_modules/
+.next/
+.vercel/
+.env*
+!.env.example
+.codex/
+skills/
+tmp/
+test-results/
+playwright-report/
+*.tsbuildinfo
+artifacts/raw/
+artifacts/relic-matrix/
+artifacts/lighthouse-*.json
+artifacts/relic-bronze-refined.png
+

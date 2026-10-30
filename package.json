@@ -1,0 +1,36 @@
+{
+  "name": "hephaestus-atelier",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@fontsource/manrope": "latest",
+    "@fontsource/marcellus": "latest",
+    "@gsap/react": "latest",
+    "gsap": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "three": "latest"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "latest",
+    "@playwright/test": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/three": "latest",
+    "lighthouse": "^13.6.0",
+    "prettier": "3.9.10",
+    "sharp": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

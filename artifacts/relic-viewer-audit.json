@@ -1,0 +1,28 @@
+{
+  "errors": [],
+  "combinations": 27,
+  "idle": {
+    "idleStart": 3,
+    "idleEnd": 3,
+    "passed": true
+  },
+  "reducedMotionRotation": {
+    "rotateStart": 4,
+    "rotateEnd": 4,
+    "passed": true
+  },
+  "normalMotion": {
+    "motionStart": 8,
+    "motionEnd": 16,
+    "motionSettled": 16,
+    "passed": true
+  },
+  "offscreen": {
+    "offscreenStart": 17,
+    "offscreenEnd": 17,
+    "passed": true
+  },
+  "axeViolations": [],
+  "fallbackVisible": true,
+  "fallbackControlsDisabled": true
+}
