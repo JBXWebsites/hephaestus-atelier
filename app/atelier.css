@@ -1,0 +1,1047 @@
+/* The continuous foundry: one spatial language, rather than repeated page blocks. */
+.section-top > .section-number:first-child {
+  display: block;
+}
+.orbit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 72px;
+  padding: 4px 0;
+  font-size: 14px;
+}
+.orbit-link-seal {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  flex: none;
+}
+.orbit-link-ring {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+.orbit-link-ring circle {
+  opacity: 0.3;
+}
+.orbit-link-arrow {
+  position: absolute;
+  inset: 25px;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+}
+.orbit-link-label {
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+}
+.orbit-link:hover .orbit-link-label,
+.orbit-link:focus-visible .orbit-link-label {
+  border-color: currentColor;
+}
+.orbit-link:hover .orbit-link-ring,
+.orbit-link:focus-visible .orbit-link-ring {
+  color: var(--ember);
+}
+.hero-bottom-copy .orbit-link {
+  margin-top: 23px;
+}
+.hero .eyebrow {
+  letter-spacing: 0.13em;
+}
+.hero-art > picture {
+  position: absolute;
+  inset: 0;
+}
+.hero-bottom-copy {
+  max-width: 360px;
+}
+.hero-bottom-copy p {
+  max-width: 340px;
+  font-size: 14px;
+}
+.brand small {
+  font-size: 11px;
+  letter-spacing: 0.13em;
+}
+.desktop-nav a {
+  font-size: 13px;
+}
+.header-cta {
+  border: 0;
+  gap: 20px;
+}
+.header-cta > span {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+.site-header {
+  background: transparent;
+}
+.has-scrolled .site-header {
+  background: var(--canvas);
+}
+.button {
+  min-height: 64px;
+  padding: 8px 8px 8px 24px;
+  border: 1px solid color-mix(in oklab, var(--ink) 36%, transparent);
+  box-shadow: inset 0 0 0 4px color-mix(in oklab, var(--dark) 4%, transparent);
+  background: linear-gradient(
+    120deg,
+    var(--paper),
+    color-mix(in oklab, var(--paper) 89%, var(--dark))
+  );
+}
+.button > span:last-child {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  width: 44px;
+  background: var(--dark);
+  color: var(--paper);
+  font-size: 23px;
+  border: 1px solid var(--line);
+}
+.button:hover {
+  background: var(--ink);
+}
+.button:active {
+  box-shadow: inset 0 2px 7px color-mix(in oklab, var(--dark) 19%, transparent);
+}
+.maker {
+  padding: 86px var(--gutter) 64px;
+  position: relative;
+}
+.maker-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 42px;
+  align-items: flex-start;
+}
+.maker-heading .section-number {
+  font-size: 13px;
+}
+.maker-heading > p {
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 200px;
+}
+.maker-grid {
+  grid-template-columns: 1.12fr 1fr;
+  gap: clamp(70px, 10vw, 170px);
+  align-items: center;
+}
+.maker-visual {
+  position: relative;
+  padding: 0 9% 82px 0;
+}
+.maker-image {
+  height: 560px;
+  clip-path: polygon(0 0, 100% 0, 100% 93%, 90% 100%, 0 100%);
+}
+.maker-image .image-caption {
+  left: 24px;
+  bottom: 32px;
+  font-size: 11px;
+  max-width: 45%;
+  line-height: 1.5;
+}
+.maker-fragment {
+  position: absolute;
+  right: -6%;
+  bottom: 0;
+  width: 46%;
+  background: var(--paper);
+  padding: 10px 10px 0;
+  z-index: 2;
+  box-shadow: 0 20px 30px color-mix(in oklab, var(--dark) 11%, transparent);
+}
+.maker-fragment > div {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+.maker-fragment img {
+  object-position: center;
+  transform: scale(1.7);
+}
+.maker-fragment figcaption {
+  padding: 12px 2px 15px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.maker-coordinate {
+  position: absolute;
+  left: 0;
+  bottom: 35px;
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  max-width: 45%;
+}
+.maker h2 {
+  font-size: clamp(64px, 6.3vw, 98px);
+  line-height: 1.02;
+  margin-bottom: 30px;
+}
+.maker h2 > span {
+  color: var(--dark);
+}
+.maker-copy p {
+  font-size: 15px;
+  line-height: 1.85;
+}
+.myth-note {
+  font-size: 13px;
+}
+.maker-footnote {
+  margin-top: 40px;
+  padding-top: 18px;
+  letter-spacing: 0.03em;
+}
+.collection {
+  padding: 80px var(--gutter) 100px;
+}
+.collection .section-top {
+  margin-bottom: 32px;
+  letter-spacing: 0.05em;
+}
+.collection-heading {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 50px;
+  margin-bottom: 52px;
+}
+.collection-heading h2 {
+  font-size: clamp(48px, 4.5vw, 72px);
+}
+.collection-heading p {
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 300px;
+  justify-self: end;
+}
+.gallery-grid {
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(50px, 7vw, 110px);
+  align-items: center;
+}
+.gallery-stage {
+  position: relative;
+  padding: 0 0 28px 40px;
+}
+.gallery-art {
+  aspect-ratio: 1.03;
+  clip-path: polygon(0 0, 91% 0, 100% 9%, 100% 100%, 0 100%);
+}
+.gallery-art img {
+  object-position: center;
+}
+.gallery-ordinal {
+  position: absolute;
+  bottom: -25px;
+  left: -10px;
+  font-family: var(--font-display), serif;
+  font-size: clamp(100px, 11vw, 180px);
+  color: var(--paper);
+  line-height: 1;
+  pointer-events: none;
+  text-shadow: 0 3px 20px color-mix(in oklab, var(--canvas) 40%, transparent);
+}
+.gallery-edge-note {
+  position: absolute;
+  writing-mode: vertical-rl;
+  top: 0;
+  left: 0;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+}
+.gallery-art-label {
+  left: auto;
+  right: 20px;
+  bottom: 20px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+.gallery-index {
+  max-width: 520px;
+}
+.study-button {
+  padding: 15px 0;
+  gap: 17px;
+  position: relative;
+  min-height: 98px;
+}
+.study-thumb {
+  display: block;
+  position: relative;
+  width: 62px;
+  height: 66px;
+  overflow: hidden;
+  opacity: 0.6;
+}
+.study-button.active .study-thumb {
+  opacity: 1;
+  outline: 1px solid var(--ember);
+  outline-offset: 4px;
+}
+.study-number {
+  display: none;
+}
+.study-name {
+  font-size: 34px;
+}
+.study-name small {
+  font-size: 12px;
+  margin-top: 7px;
+}
+.study-arrow {
+  width: 32px;
+  margin-left: auto;
+}
+.study-story {
+  margin-top: 28px;
+  min-height: 136px;
+}
+.study-story h3 {
+  font-size: 20px;
+  line-height: 1.4;
+}
+.study-story p {
+  font-size: 14px;
+  line-height: 1.75;
+}
+.gallery-index .orbit-link {
+  margin-top: 8px;
+  gap: 16px;
+  min-height: 60px;
+}
+.gallery-index .orbit-link-seal {
+  width: 58px;
+  height: 58px;
+}
+.gallery-index .orbit-link-arrow {
+  inset: 19px;
+  width: 20px;
+  height: 20px;
+}
+.art-note {
+  margin-top: 18px;
+  max-width: 340px;
+  line-height: 1.7;
+}
+.invocation {
+  min-height: 360px;
+  display: grid;
+  align-content: center;
+  padding: 52px var(--gutter);
+  background: var(--canvas);
+  color: var(--ember);
+  border-top: 1px solid var(--line);
+  margin: 0 var(--gutter);
+  padding-left: 0;
+  padding-right: 0;
+}
+.bridge-note {
+  font-size: 13px;
+  color: var(--muted);
+  position: relative;
+  z-index: 2;
+}
+.invitation-type {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display), serif;
+  font-size: clamp(70px, 7.6vw, 112px) !important;
+  line-height: 0.98 !important;
+  margin: 16px 0 22px;
+  max-width: 1100px;
+  width: 100%;
+}
+.invitation-type > span:first-child {
+  align-self: flex-start;
+}
+.invitation-type > span:last-child {
+  align-self: flex-end;
+}
+.invitation-orbit {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  left: 38%;
+  top: 8%;
+  opacity: 0.6;
+}
+.invitation-orbit svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.65;
+  width: 100%;
+  height: 100%;
+}
+.bridge-link {
+  justify-self: end;
+  font-size: 13px;
+  color: var(--ink);
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  min-height: 44px;
+  position: relative;
+  z-index: 2;
+}
+.bridge-link > span {
+  font-size: 28px;
+}
+.bridge-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.forge {
+  padding-top: 72px;
+}
+.forge .section-top {
+  margin-bottom: 30px;
+}
+.forge-intro {
+  margin-bottom: 42px;
+}
+.forge-intro h2 {
+  font-size: clamp(56px, 5vw, 80px);
+}
+.forge-intro > p {
+  font-size: 15px;
+}
+.forge-object {
+  align-self: start;
+  position: sticky;
+  top: 90px;
+  padding-bottom: 20px;
+}
+.forge-controls {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+.choice {
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 12px;
+  min-height: 52px;
+  font-size: 13px;
+}
+.choice.selected {
+  background: color-mix(in oklab, var(--paper) 7%, transparent);
+  border-bottom: 2px solid var(--ember);
+}
+.choice:hover {
+  background: color-mix(in oklab, var(--paper) 4%, transparent);
+}
+.choice-dot {
+  width: 6px;
+  height: 6px;
+}
+.material-swatch {
+  width: 22px;
+  height: 22px;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--ink) 44%, transparent),
+    0 2px 5px color-mix(in oklab, var(--canvas) 44%, transparent);
+}
+.field-hint {
+  font-size: 12px;
+  margin-top: 11px;
+}
+.marks .choice {
+  flex-direction: row;
+  min-height: 66px;
+  gap: 10px;
+  padding: 12px 6px;
+}
+.marks svg {
+  width: 28px;
+  height: 28px;
+}
+legend {
+  font-size: 14px;
+}
+.forge-summary p {
+  font-size: 12px;
+}
+.forge .scene-loading {
+  min-height: 400px;
+}
+.closing {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.closing-top {
+  margin-bottom: 30px;
+}
+.closing h2 {
+  font-size: clamp(44px, 5.5vw, 82px);
+  max-width: 1050px;
+}
+.closing-bottom {
+  margin-top: 36px;
+}
+.closing-bottom > p {
+  font-size: 14px;
+}
+.collection-notice {
+  font-size: 13px;
+  color: var(--error-on-paper);
+}
+.footer-wordmark {
+  display: block;
+  position: relative;
+}
+.footer-wordmark::after {
+  content: "↑";
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-family: var(--font-body);
+  font-size: clamp(30px, 4vw, 60px);
+}
+.footer-wordmark:hover {
+  color: var(--ember);
+}
+@media (min-width: 1600px) {
+  .maker-image {
+    height: 650px;
+  }
+  .gallery-art {
+    max-height: 720px;
+  }
+}
+@media (max-width: 1100px) {
+  .maker-grid {
+    gap: 60px;
+  }
+  .maker-image {
+    height: 500px;
+  }
+  .maker h2 {
+    font-size: 68px;
+  }
+  .gallery-grid {
+    gap: 40px;
+  }
+  .study-button {
+    gap: 14px;
+  }
+  .study-name {
+    font-size: 30px;
+  }
+  .study-thumb {
+    width: 50px;
+    height: 58px;
+  }
+  .forge-object {
+    position: relative;
+    top: auto;
+  }
+}
+@media (max-width: 800px) {
+  .maker {
+    padding: 62px var(--gutter);
+  }
+  .maker-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .maker-image {
+    height: 410px;
+  }
+  .maker-fragment {
+    right: -6%;
+    width: 54%;
+  }
+  .maker-coordinate {
+    font-size: 11px;
+    max-width: 40%;
+  }
+  .maker h2 {
+    font-size: 52px;
+  }
+  .maker-copy p {
+    font-size: 14px;
+  }
+  .collection {
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
+  .collection-heading {
+    gap: 32px;
+    grid-template-columns: 1.3fr 1fr;
+  }
+  .collection-heading h2 {
+    font-size: 46px;
+  }
+  .collection-heading p {
+    font-size: 13px;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .gallery-stage {
+    padding-left: 24px;
+  }
+  .gallery-art {
+    aspect-ratio: 0.8;
+  }
+  .gallery-ordinal {
+    font-size: 100px;
+  }
+  .gallery-art-label {
+    font-size: 11px;
+    max-width: 70%;
+    text-align: right;
+  }
+  .study-thumb {
+    display: none;
+  }
+  .study-button {
+    min-height: 82px;
+  }
+  .study-story {
+    min-height: 160px;
+  }
+  .study-story h3 {
+    font-size: 18px;
+  }
+  .study-story p {
+    font-size: 13px;
+  }
+  .gallery-index .orbit-link {
+    font-size: 13px;
+    gap: 10px;
+  }
+  .invocation {
+    min-height: 350px;
+  }
+  .invitation-orbit {
+    width: 270px;
+    height: 270px;
+    top: 8%;
+    left: 35%;
+  }
+  .workbench {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 1fr);
+  }
+  .forge-object {
+    padding-right: 22px;
+  }
+  .forge-controls {
+    border-left: 1px solid var(--line);
+    padding-left: 24px;
+  }
+  .forge .relic-scene-stage {
+    min-height: 280px !important;
+    aspect-ratio: 1 !important;
+  }
+  .object-heading {
+    gap: 10px;
+  }
+  .object-heading > span:last-child {
+    display: none;
+  }
+  .forge .relic-scene-caption {
+    justify-content: center;
+  }
+  .forge .relic-scene-hint {
+    width: 100%;
+    text-align: center;
+  }
+  .choice {
+    font-size: 12px;
+    padding: 10px 6px;
+  }
+  .marks .choice {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .forge-intro {
+    margin-bottom: 30px;
+  }
+  .forge-intro h2 {
+    font-size: 58px;
+  }
+  .forge-intro > p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .brand small {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+  .header-cta {
+    gap: 12px;
+  }
+  .header-cta > span {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+  .hero {
+    min-height: 760px;
+  }
+  .hero-content {
+    padding-top: 168px;
+  }
+  .hero .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    margin-bottom: 26px;
+  }
+  .hero-bottom-copy p {
+    font-size: 13px;
+    max-width: 255px;
+  }
+  .hero-bottom-copy .orbit-link {
+    margin-top: 20px;
+    font-size: 13px;
+    gap: 16px;
+  }
+  .hero-bottom-copy .orbit-link-seal {
+    width: 60px;
+    height: 60px;
+  }
+  .hero-bottom-copy .orbit-link-arrow {
+    inset: 19px;
+  }
+  .hero-footer {
+    font-size: 11px;
+  }
+  .hero-footer > p {
+    display: none;
+  }
+  .maker {
+    padding-top: 44px;
+    padding-bottom: 42px;
+  }
+  .maker-heading {
+    margin-bottom: 28px;
+  }
+  .maker-heading > p {
+    display: none;
+  }
+  .maker-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .maker-visual {
+    width: 100%;
+    padding: 0 18% 72px 0;
+  }
+  .maker-image {
+    height: 380px;
+  }
+  .maker-fragment {
+    width: 42%;
+    right: 0;
+    bottom: 0;
+    padding: 7px 7px 0;
+  }
+  .maker-fragment figcaption {
+    font-size: 11px;
+    padding: 9px 0 11px;
+  }
+  .maker-coordinate {
+    bottom: 25px;
+    max-width: 45%;
+    line-height: 1.6;
+  }
+  .maker-image .image-caption {
+    font-size: 11px;
+    bottom: 24px;
+    left: 16px;
+    max-width: 150px;
+  }
+  .maker h2 {
+    font-size: clamp(48px, 13vw, 68px);
+    margin-bottom: 22px;
+  }
+  .maker h2 br:first-child {
+    display: none;
+  }
+  .maker h2 > span {
+    display: block;
+  }
+  .maker h2 > span br {
+    display: none;
+  }
+  .maker-copy {
+    max-width: none;
+  }
+  .maker-copy p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .maker-footnote {
+    margin-top: 28px;
+    font-size: 11px;
+  }
+  .collection {
+    padding-top: 48px;
+    padding-bottom: 55px;
+  }
+  .collection .section-top {
+    margin-bottom: 25px;
+  }
+  .collection-heading {
+    display: block;
+    margin-bottom: 30px;
+  }
+  .collection-heading h2 {
+    font-size: clamp(40px, 11vw, 52px);
+  }
+  .collection-heading p {
+    font-size: 14px;
+    margin-top: 22px;
+    max-width: 280px;
+  }
+  .gallery-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .gallery-stage {
+    width: 100%;
+    padding: 0 0 28px 25px;
+  }
+  .gallery-art {
+    aspect-ratio: 1.08;
+  }
+  .gallery-ordinal {
+    font-size: 96px;
+    bottom: 0;
+  }
+  .gallery-edge-note {
+    font-size: 11px;
+  }
+  .gallery-index {
+    width: 100%;
+    max-width: none;
+  }
+  .study-buttons {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .study-button {
+    min-height: 88px;
+    justify-content: center;
+    padding: 15px 4px;
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    border-bottom: 2px solid transparent;
+    text-align: center;
+  }
+  .study-button.active {
+    border-color: var(--ember);
+    background: color-mix(in oklab, var(--paper) 3%, transparent);
+  }
+  .study-name {
+    font-size: 25px;
+    display: block;
+  }
+  .study-name small {
+    display: block;
+    font-size: 11px;
+    margin-top: 8px;
+  }
+  .study-arrow {
+    display: none;
+  }
+  .study-story {
+    margin-top: 24px;
+    min-height: 135px;
+  }
+  .study-story h3 {
+    font-size: 20px;
+  }
+  .study-story p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+  .gallery-index .orbit-link {
+    margin-top: 0;
+  }
+  .art-note {
+    font-size: 11px;
+    max-width: 290px;
+  }
+  .invocation {
+    min-height: 300px;
+    padding: 32px 0;
+  }
+  .bridge-note {
+    font-size: 12px;
+  }
+  .invitation-type {
+    font-size: clamp(59px, 17vw, 85px) !important;
+    margin: 20px 0;
+  }
+  .invitation-orbit {
+    width: 210px;
+    height: 210px;
+    left: 30%;
+    top: 15%;
+  }
+  .bridge-link {
+    font-size: 12px;
+    gap: 20px;
+  }
+  .forge {
+    padding-top: 48px;
+    padding-bottom: 50px;
+  }
+  .forge .section-top {
+    margin-bottom: 25px;
+  }
+  .forge-intro {
+    display: block;
+    margin-bottom: 28px;
+  }
+  .forge-intro h2 {
+    font-size: 48px;
+  }
+  .forge-intro h2 br {
+    display: none;
+  }
+  .forge-intro > p {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .workbench {
+    display: flex;
+    flex-direction: column;
+  }
+  .forge-object {
+    position: sticky;
+    top: 72px;
+    padding: 10px 0 8px;
+    background: var(--canvas);
+    border-bottom: 1px solid var(--line);
+    z-index: 5;
+    width: 100%;
+  }
+  .object-heading {
+    line-height: 1.2;
+  }
+  .object-heading > span:first-child {
+    font-size: 22px;
+  }
+  .object-heading > span:last-child {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .forge .relic-scene-stage {
+    height: clamp(180px, 29svh, 250px) !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+  }
+  .forge .scene-loading {
+    min-height: clamp(220px, 36svh, 290px);
+  }
+  .forge .relic-scene-caption {
+    margin-top: 0;
+    gap: 8px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  .forge .relic-scene-hint {
+    font-size: 11px;
+    width: auto;
+    text-align: left;
+  }
+  .forge .relic-scene-controls {
+    gap: 5px;
+  }
+  .forge .relic-scene-control {
+    min-height: 44px;
+    min-width: 36px;
+    padding: 6px 9px;
+  }
+  .forge .object-inscription {
+    display: none;
+  }
+  .forge-controls {
+    border-left: 0;
+    padding: 25px 0 8px;
+    width: 100%;
+  }
+  .forge-controls fieldset {
+    margin-bottom: 25px;
+    scroll-margin-top: 440px;
+  }
+  .choice {
+    font-size: 13px;
+    min-height: 48px;
+  }
+  .marks .choice {
+    flex-direction: row;
+    min-height: 60px;
+  }
+  .field-hint {
+    font-size: 12px;
+  }
+  .forge-summary {
+    margin-top: 8px;
+  }
+  .forge-summary p {
+    font-size: 12px;
+  }
+  .closing {
+    padding: 42px var(--gutter);
+  }
+  .closing h2 {
+    font-size: clamp(34px, 9.5vw, 48px);
+  }
+  .closing-bottom {
+    margin-top: 28px;
+  }
+  .closing-bottom > p {
+    font-size: 13px;
+  }
+  .footer-wordmark::after {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .brand small {
+    display: none;
+  }
+  .hero h1 {
+    font-size: 56px;
+  }
+  .hero-content {
+    padding-top: 160px;
+  }
+  .maker-image {
+    height: 330px;
+  }
+  .study-name {
+    font-size: 22px;
+  }
+  .forge .relic-scene-hint {
+    max-width: 90px;
+  }
+  .marks .choice {
+    gap: 6px;
+  }
+}

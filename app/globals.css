@@ -3,10 +3,11 @@
   --surface: oklch(24% 0.009 135);
   --ink: oklch(93% 0.015 85);
   --muted: oklch(76% 0.017 120);
-  --paper: oklch(88% 0.02 115);
+  --paper: oklch(91.8% 0.017 85);
   --dark: oklch(25% 0.015 135);
   --ember: oklch(70% 0.15 40);
   --line: oklch(55% 0.015 120 / 0.35);
+  --error-on-paper: oklch(43% 0.1 40);
   --focus: #dcf0a8;
   --gutter: clamp(20px, 4vw, 76px);
 }

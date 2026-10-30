@@ -19,6 +19,41 @@ const RelicScene = dynamic(() => import("./RelicScene"), {
   loading: () => <div className="scene-loading">Preparing the workbench…</div>,
 });
 export const COLLECTION_KEY = "hephaestus.collection.v1";
+const publicRequestErrors: Record<number, readonly string[]> = {
+  400: [
+    "Open the atelier on this site before forging a relic.",
+    "Choose a valid intention, material and maker’s mark.",
+    "Choose an intention, material and maker’s mark.",
+    "The recipe could not be read. Please try again.",
+    "The recipe could not be read. Send valid JSON with three choices.",
+  ],
+  413: ["The recipe is too large. Send only the three choices."],
+  415: ["Send the three choices as JSON."],
+};
+class ForgeRequestError extends Error {}
+function validRecord(
+  value: unknown,
+  choice: RecipeChoice,
+): value is RelicRecord {
+  if (!value || typeof value !== "object") return false;
+  const record = value as Partial<RelicRecord>;
+  const recipe = record.recipe;
+  return (
+    typeof record.token === "string" &&
+    /^[A-Za-z0-9_-]{38}$/.test(record.token) &&
+    record.url === `/relic/${record.token}` &&
+    !!recipe &&
+    recipe.version === 1 &&
+    recipe.intention === choice.intention &&
+    recipe.material === choice.material &&
+    recipe.mark === choice.mark &&
+    typeof recipe.nonce === "string" &&
+    /^[a-f0-9]{16}$/.test(recipe.nonce) &&
+    record.id === `HPH-${recipe.nonce.toUpperCase()}` &&
+    typeof recipe.createdAt === "string" &&
+    Number.isFinite(Date.parse(recipe.createdAt))
+  );
+}
 export function readCollection(): RelicRecord[] {
   try {
     const value = JSON.parse(localStorage.getItem(COLLECTION_KEY) || "[]");
@@ -63,7 +98,9 @@ export default function Forge({
     [result, setResult] = useState<RelicRecord | null>(null),
     [error, setError] = useState(""),
     [notice, setNotice] = useState(""),
-    [copy, setCopy] = useState("Copy link");
+    [copy, setCopy] = useState("Copy link"),
+    [copyStatus, setCopyStatus] = useState(""),
+    [shareAddress, setShareAddress] = useState("");
   useEffect(() => {
     requestVersion.current++;
     activeRequest.current?.abort();
@@ -73,6 +110,9 @@ export default function Forge({
     setResult(null);
     setError("");
     setNotice("");
+    setCopy("Copy link");
+    setCopyStatus("");
+    setShareAddress("");
   }, [selectedIntention, selectionVersion]);
   useEffect(
     () => () => {
@@ -109,11 +149,14 @@ export default function Forge({
     { scope: root, dependencies: [result], revertOnUpdate: true },
   );
   function update(part: Partial<RecipeChoice>) {
+    requestVersion.current++;
     setChoice((c) => ({ ...c, ...part }));
     setResult(null);
     setError("");
     setNotice("");
     setCopy("Copy link");
+    setCopyStatus("");
+    setShareAddress("");
   }
   async function forge() {
     if (busy.current) return;
@@ -121,9 +164,16 @@ export default function Forge({
     setPending(true);
     setError("");
     setNotice("");
+    setCopy("Copy link");
+    setCopyStatus("");
+    setShareAddress("");
+    let timedOut = false;
     const version = ++requestVersion.current,
       controller = new AbortController(),
-      timeout = setTimeout(() => controller.abort(), 15000);
+      timeout = setTimeout(() => {
+        timedOut = true;
+        controller.abort();
+      }, 15000);
     activeRequest.current = controller;
     try {
       const response = await fetch("/api/relics", {
@@ -132,11 +182,26 @@ export default function Forge({
         body: JSON.stringify(choice),
         signal: controller.signal,
       });
-      const data = await response.json();
-      if (!response.ok)
-        throw new Error(
-          data.error ||
-            "The forge could not complete your relic. Please try again.",
+      const data: unknown = await response.json().catch(() => null);
+      if (!response.ok) {
+        const message =
+          data && typeof data === "object" && "error" in data
+            ? data.error
+            : null;
+        const safeMessage =
+          typeof message === "string" &&
+          publicRequestErrors[response.status]?.includes(message)
+            ? message
+            : response.status >= 500
+              ? "The forge is temporarily unavailable. Please try again."
+              : "The forge could not complete your request. Please try again.";
+        throw new ForgeRequestError(
+          `${safeMessage} Your choices are still here.`,
+        );
+      }
+      if (!validRecord(data, choice))
+        throw new ForgeRequestError(
+          "The forge returned an incomplete record. Your choices are still here. Please try again.",
         );
       if (version !== requestVersion.current) return;
       setResult(data);
@@ -151,10 +216,14 @@ export default function Forge({
           "Your relic is ready. This browser could not save it locally; keep the link to return.",
         );
       }
-    } catch {
+    } catch (cause) {
       if (version === requestVersion.current)
         setError(
-          "The forge could not complete your request. Your choices are still here. Please try again.",
+          timedOut
+            ? "The forge took too long to respond. Your choices are still here. Please try again."
+            : cause instanceof ForgeRequestError
+              ? cause.message
+              : "We couldn’t reach the forge. Your choices are still here. Check your connection and try again.",
         );
     } finally {
       clearTimeout(timeout);
@@ -167,13 +236,20 @@ export default function Forge({
   }
   async function copyLink() {
     if (!result) return;
+    const version = requestVersion.current;
+    const address = new URL(result.url, location.origin).href;
     try {
-      await navigator.clipboard.writeText(
-        new URL(result.url, location.origin).href,
-      );
+      await navigator.clipboard.writeText(address);
+      if (version !== requestVersion.current) return;
       setCopy("Link copied");
+      setCopyStatus("Your share link is on the clipboard.");
+      setShareAddress("");
     } catch {
-      setCopy("Open relic to copy its address");
+      if (version !== requestVersion.current) return;
+      setShareAddress(address);
+      setCopyStatus(
+        "This browser could not copy the link. Select and copy the address below.",
+      );
     }
   }
   const current = getIntention(choice.intention);
@@ -187,13 +263,11 @@ export default function Forge({
       data-sc-act="forge"
     >
       <div className="section-top">
-        <span className="section-number">IV / THE FORGE</span>
-        <span>FROM MYTH TO MATTER</span>
+        <span className="section-number">The forge / 03</span>
       </div>
       <div className="forge-intro">
         <h2 id="forge-title">
-          What will
-          <br />
+          What will <br />
           you carry?
         </h2>
         <p>
@@ -353,6 +427,38 @@ export default function Forge({
                   {copy}
                 </button>
               </div>
+              <p
+                className="fine-print"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                {copyStatus}
+              </p>
+              {shareAddress && (
+                <label className="fine-print" style={{ display: "block" }}>
+                  Your relic’s share link
+                  <input
+                    type="text"
+                    readOnly
+                    value={shareAddress}
+                    onFocus={(event) => event.currentTarget.select()}
+                    onClick={(event) => event.currentTarget.select()}
+                    style={{
+                      display: "block",
+                      width: "100%",
+                      minWidth: 0,
+                      minHeight: 44,
+                      marginTop: 8,
+                      padding: "10px 12px",
+                      color: "inherit",
+                      background: "transparent",
+                      border: "1px solid currentColor",
+                      font: "inherit",
+                    }}
+                  />
+                </label>
+              )}
             </div>
           )}
           <p className={error ? "status error" : "status"} aria-live="polite">

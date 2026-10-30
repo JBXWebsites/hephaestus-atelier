@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "./atelier.css";
 const display = localFont({
   src: "../public/fonts/marcellus.woff2",
   variable: "--font-display",

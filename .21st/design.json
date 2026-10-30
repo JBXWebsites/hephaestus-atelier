@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "project": {
+    "name": "hephaestus-atelier",
+    "productType": "Cinematic Greek mythology atelier and interactive portfolio experience",
+    "stack": ["nextjs", "react"]
+  },
+  "sources": {
+    "tokens": ["app/globals.css", "app/atelier.css"],
+    "components": [
+      "components/OrbitLink.tsx",
+      "components/Forge.tsx",
+      "components/Experience.tsx"
+    ],
+    "assets": ["public/images"],
+    "instructions": ["DESIGN.md", "PRODUCT.md", "AGENTS.md"]
+  },
+  "design": {
+    "colorMode": "dark",
+    "colors": {
+      "--muted": {
+        "value": "oklch(76% 0.017 120)",
+        "source": "app/globals.css"
+      },
+      "--canvas": {
+        "value": "oklch(19.6% 0.006 140)",
+        "source": "app/globals.css"
+      },
+      "--surface": {
+        "value": "oklch(24% 0.009 135)",
+        "source": "app/globals.css"
+      },
+      "--ink": {
+        "value": "oklch(93% 0.015 85)",
+        "source": "app/globals.css"
+      },
+      "--paper": {
+        "value": "oklch(91.8% 0.017 85)",
+        "source": "app/globals.css"
+      },
+      "--dark": {
+        "value": "oklch(25% 0.015 135)",
+        "source": "app/globals.css"
+      },
+      "--ember": {
+        "value": "oklch(70% 0.15 40)",
+        "source": "app/globals.css"
+      },
+      "--line": {
+        "value": "oklch(55% 0.015 120 / 0.35)",
+        "source": "app/globals.css"
+      },
+      "--error-on-paper": {
+        "value": "oklch(43% 0.1 40)",
+        "source": "app/globals.css"
+      },
+      "--focus": {
+        "value": "#dcf0a8",
+        "source": "app/globals.css"
+      }
+    },
+    "typography": {},
+    "spacing": {
+      "--gutter": {
+        "value": "clamp(20px, 4vw, 76px)",
+        "source": "app/globals.css"
+      }
+    },
+    "radius": {},
+    "shadows": {},
+    "motion": {},
+    "density": "editorial"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [
+      "Native anchor links",
+      "Native buttons with aria-pressed",
+      "GSAP timelines and ScrollTrigger",
+      "Existing demand-rendered Three.js relic"
+    ],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [
+      "All authored motion uses GSAP; reduced-motion composition is complete.",
+      "Mobile controls and compact object preview remain co-visible.",
+      "Use existing art; disclose imagined studies.",
+      "Preserve backend creation, record, download, share, and local collection."
+    ],
+    "avoid": [
+      "Autoplay galleries",
+      "Generic pill CTAs and card grids",
+      "Blue/purple decorative glow",
+      "Additional animation or smooth-scroll frameworks"
+    ]
+  },
+  "decisions": [
+    {
+      "date": "2026-10-30",
+      "decision": "Adapt 21st exhibition indexes, tactile surfaces, layered imagery, and Zen Linen warmth to the existing Hephaestus identity; locally authored implementation.",
+      "reason": "The user requested a distinctive cohesive revision with working controls, informed by an extensive public catalog review."
+    },
+    {
+      "date": "2026-10-30",
+      "decision": "Merge collection, short invitation, and forge on one charcoal ground; warm maker chapter with a single bronze detail overlap.",
+      "reason": "Reduce repeated full-width scene resets and bring the useful action forward."
+    }
+  ],
+  "evidence": [
+    {
+      "fact": "design.colorMode:light",
+      "source": "app/globals.css"
+    },
+    {
+      "fact": "design.tokens",
+      "source": "app/globals.css"
+    },
+    {
+      "fact": "project.instructions",
+      "source": "AGENTS.md"
+    },
+    {
+      "fact": "project.instructions",
+      "source": "DESIGN.md"
+    },
+    {
+      "fact": "project.instructions",
+      "source": "PRODUCT.md"
+    },
+    {
+      "fact": "project.stack:nextjs",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:react",
+      "source": "package.json"
+    }
+  ],
+  "generatedAt": "2026-10-30T02:30:39.855Z"
+}

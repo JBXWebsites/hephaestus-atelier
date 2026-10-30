@@ -282,11 +282,13 @@ function buildRelic(recipe: Recipe, surface: THREE.Texture) {
     envMapIntensity: 1.5,
   });
   const inset = new THREE.MeshStandardMaterial({
-    color: recipe.material === "bronze" ? "#28352e" : "#242e34",
-    metalness: recipe.material === "bronze" ? 0.38 : 0.65,
-    roughness: 0.58,
+    color: recipe.material === "bronze" ? "#694a30" : "#242e34",
+    metalness: recipe.material === "bronze" ? 0.94 : 0.65,
+    roughness: recipe.material === "bronze" ? 0.31 : 0.58,
+    roughnessMap: recipe.material === "bronze" ? surface : null,
+    envMapIntensity: recipe.material === "bronze" ? 1.3 : 1,
     bumpMap: surface,
-    bumpScale: 0.012,
+    bumpScale: recipe.material === "bronze" ? 0.003 : 0.012,
   });
   const face = new THREE.Group();
   const add = (mesh: THREE.Object3D, z = 0) => {
@@ -811,8 +813,11 @@ function RelicIllustration({
           <stop offset="1" stopColor={colors[0]} />
         </linearGradient>
         <radialGradient id={`relic-field-${id}`}>
-          <stop stopColor="#40473d" />
-          <stop offset="1" stopColor="#1a211f" />
+          <stop stopColor={material === "bronze" ? "#68503a" : "#40473d"} />
+          <stop
+            offset="1"
+            stopColor={material === "bronze" ? "#30271e" : "#1a211f"}
+          />
         </radialGradient>
       </defs>
       <g transform="translate(300 300) rotate(-9)">

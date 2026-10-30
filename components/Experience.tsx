@@ -14,6 +14,7 @@ import {
   recipeTitle,
 } from "@/lib/relics";
 import Emblem from "./Emblem";
+import OrbitLink from "./OrbitLink";
 import Forge, { readCollection, COLLECTION_KEY } from "./Forge";
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin, ScrollSmoother);
 const studies = [
@@ -50,6 +51,7 @@ const studies = [
 ];
 export default function Experience() {
   const root = useRef<HTMLDivElement>(null),
+    menuTrigger = useRef<HTMLButtonElement>(null),
     galleryRef = useRef<HTMLDivElement>(null),
     smoother = useRef<ScrollSmoother | null>(null);
   const [selected, setSelected] = useState(0),
@@ -61,6 +63,7 @@ export default function Experience() {
     [osReduced, setOsReduced] = useState(false),
     [collection, setCollection] = useState<RelicRecord[]>([]),
     [collectionOpen, setCollectionOpen] = useState(false);
+  const [collectionNotice, setCollectionNotice] = useState("");
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll();
@@ -157,29 +160,74 @@ export default function Experience() {
               },
             },
           );
-          gsap.from(".invocation-line span", {
-            yPercent: 105,
-            stagger: 0.1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: ".invocation",
-              start: "top 80%",
-              end: "center 65%",
-              scrub: 0.5,
-            },
-          });
           gsap.fromTo(
-            ".invocation-emblem",
-            { rotation: -25, scale: 0.85 },
+            ".maker-fragment",
+            { y: 35, rotation: 4 },
             {
-              rotation: 25,
-              scale: 1,
+              y: -35,
+              rotation: -2,
+              ease: "none",
+              scrollTrigger: {
+                trigger: ".maker-visual",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.7,
+              },
+            },
+          );
+          gsap.fromTo(
+            ".gallery-ordinal",
+            { y: 35 },
+            {
+              y: -25,
+              ease: "none",
+              scrollTrigger: {
+                trigger: ".gallery-stage",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.8,
+              },
+            },
+          );
+          gsap.fromTo(
+            ".invitation-type > span:first-child",
+            { xPercent: -5 },
+            {
+              xPercent: 5,
               ease: "none",
               scrollTrigger: {
                 trigger: ".invocation",
                 start: "top bottom",
                 end: "bottom top",
-                scrub: 0.6,
+                scrub: 0.7,
+              },
+            },
+          );
+          gsap.fromTo(
+            ".invitation-type > span:last-child",
+            { xPercent: 5 },
+            {
+              xPercent: -5,
+              ease: "none",
+              scrollTrigger: {
+                trigger: ".invocation",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.7,
+              },
+            },
+          );
+          gsap.fromTo(
+            ".invitation-orbit",
+            { rotation: -25 },
+            {
+              rotation: 30,
+              ease: "none",
+              scrollTrigger: {
+                trigger: ".invocation",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 0.7,
               },
             },
           );
@@ -213,6 +261,33 @@ export default function Experience() {
     { scope: root, dependencies: [reducedMotion], revertOnUpdate: true },
   );
   const { contextSafe } = useGSAP({ scope: root });
+  const goHome = contextSafe((event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey ||
+      event.button !== 0
+    )
+      return;
+    event.preventDefault();
+    setMenu(false);
+    gsap.killTweensOf(window);
+    if (reducedMotion) window.scrollTo({ top: 0, behavior: "instant" });
+    else if (smoother.current) smoother.current.scrollTo(0, true);
+    else
+      gsap.to(window, {
+        scrollTo: { y: 0, autoKill: true },
+        duration: 1,
+        ease: "power3.inOut",
+      });
+    document.getElementById("main")?.focus({ preventScroll: true });
+    history.replaceState(
+      history.state,
+      "",
+      location.pathname + location.search,
+    );
+  });
   const changeStudy = contextSafe((index: number) => {
     setSelected(index);
     if (!reducedMotion)
@@ -252,7 +327,7 @@ export default function Experience() {
         ease: "power3.inOut",
         onComplete: () => target.focus({ preventScroll: true }),
       });
-    history.replaceState(null, "", hash);
+    history.replaceState(history.state, "", hash);
   });
   function toggleMotion() {
     setPaused((p) => {
@@ -267,7 +342,13 @@ export default function Experience() {
     try {
       localStorage.setItem(COLLECTION_KEY, JSON.stringify(remaining));
       setCollection(remaining);
-    } catch {}
+      setCollectionNotice("");
+      requestAnimationFrame(() => ScrollTrigger.refresh());
+    } catch {
+      setCollectionNotice(
+        "This browser could not update the saved collection. Please try again.",
+      );
+    }
   }
   const study = studies[selected];
   return (
@@ -282,8 +363,17 @@ export default function Experience() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="site-header">
-        <Link className="brand" href="/">
+      <header
+        className="site-header"
+        onKeyDown={(event) => {
+          if (event.key === "Escape" && menu) {
+            event.preventDefault();
+            setMenu(false);
+            menuTrigger.current?.focus();
+          }
+        }}
+      >
+        <Link className="brand" href="/" onClick={goHome}>
           <Emblem />
           <span>
             HEPHAESTUS<small>THE DIVINE ATELIER</small>
@@ -297,6 +387,7 @@ export default function Experience() {
           Enter the forge <span aria-hidden="true">↗</span>
         </a>
         <button
+          ref={menuTrigger}
           className="menu-toggle"
           onClick={() => setMenu(!menu)}
           aria-expanded={menu}
@@ -305,13 +396,7 @@ export default function Experience() {
           {menu ? "Close" : "Menu"}
         </button>
         {menu && (
-          <nav
-            id="mobile-menu"
-            aria-label="Mobile navigation"
-            onKeyDown={(e) => {
-              if (e.key === "Escape") setMenu(false);
-            }}
-          >
+          <nav id="mobile-menu" aria-label="Mobile navigation">
             <a href="#atelier">The atelier</a>
             <a href="#collection">The collection</a>
             <a href="#forge">Enter the forge</a>
@@ -344,10 +429,7 @@ export default function Experience() {
               </div>
               <div className="hero-shade" />
               <div className="hero-content">
-                <p className="eyebrow hero-detail">
-                  <span className="tiny-spark">✦</span> AN EXPLORATION OF MYTH &
-                  MAKING
-                </p>
+                <p className="eyebrow hero-detail">A WORKSHOP BEYOND OLYMPUS</p>
                 <h1 id="hero-title">
                   <span className="hero-line">
                     <span>FORGED</span>
@@ -361,13 +443,13 @@ export default function Experience() {
                 </h1>
                 <div className="hero-detail hero-bottom-copy">
                   <p>
-                    A workshop beyond Olympus.
+                    Choose a form, a metal, a mark.
                     <br />
-                    Objects shaped by myth, made meaningful by you.
+                    Make a digital relic to keep.
                   </p>
-                  <a href="#forge" className="text-link">
-                    Become the maker <span aria-hidden="true">↗</span>
-                  </a>
+                  <OrbitLink href="#forge" reducedMotion={reducedMotion}>
+                    Become the maker
+                  </OrbitLink>
                 </div>
               </div>
               <div className="hero-footer hero-detail">
@@ -389,34 +471,50 @@ export default function Experience() {
               tabIndex={-1}
               data-sc-act="maker"
             >
-              <div className="section-top">
-                <span className="section-number">I / THE MAKER</span>
-                <span>OLYMPUS HAD ITS GODS. THEY HAD THEIR MAKER.</span>
+              <div className="maker-heading">
+                <span className="section-number">The maker / 01</span>
+                <p>
+                  Power was inherited.
+                  <br />
+                  Craft had to be learned.
+                </p>
               </div>
               <div className="maker-grid">
-                <div className="maker-image" data-reveal>
-                  <Image
-                    src="/images/workshop.webp"
-                    alt="An imagined volcanic workshop, with a tall ember-lit doorway and a bronze object on a stone workbench"
-                    fill
-                    sizes="(max-width: 700px) 90vw, 44vw"
-                  />
-                  <span className="image-caption">
-                    A WORKSHOP OUTSIDE OF TIME
+                <div className="maker-visual">
+                  <div className="maker-image">
+                    <Image
+                      src="/images/workshop.webp"
+                      alt="An imagined volcanic workshop, with a tall ember-lit doorway and a bronze object on a stone workbench"
+                      fill
+                      sizes="(max-width: 700px) 90vw, 44vw"
+                    />
+                    <span className="image-caption">
+                      A WORKSHOP OUTSIDE OF TIME
+                    </span>
+                  </div>
+                  <figure className="maker-fragment">
+                    <div>
+                      <Image
+                        src="/images/aegis.webp"
+                        alt="Detail of aged bronze, concentric carving and the sun mark"
+                        fill
+                        sizes="(max-width: 600px) 35vw, 20vw"
+                      />
+                    </div>
+                    <figcaption>The trace of a maker’s hand.</figcaption>
+                  </figure>
+                  <span className="maker-coordinate" aria-hidden="true">
+                    BRONZE / DETAIL STUDY 01
                   </span>
                 </div>
                 <div className="maker-copy">
-                  <span className="small-star" aria-hidden="true">
-                    ✳
-                  </span>
                   <h2 id="maker-title" data-reveal>
-                    The gods
-                    <br />
-                    had power.
+                    A god.
                     <br />
                     <span>
-                      One had
-                      <br />a craft.
+                      A pair
+                      <br />
+                      of hands.
                     </span>
                   </h2>
                   <div data-reveal>
@@ -453,10 +551,6 @@ export default function Experience() {
                   </div>
                 </div>
               </div>
-              <p className="maker-footnote">
-                NOT EVERY LEGEND BEGINS WITH A VICTORY.{" "}
-                <span>SOME BEGIN WITH THE DECISION TO MAKE SOMETHING.</span>
-              </p>
             </section>
             <section
               id="collection"
@@ -466,16 +560,12 @@ export default function Experience() {
               data-sc-act="collection"
             >
               <div className="section-top">
-                <span className="section-number">
-                  II / OBJECTS OF INTENTION
-                </span>
-                <span>THREE STUDIES. COUNTLESS STORIES.</span>
+                <span className="section-number">The studies / 02</span>
               </div>
               <div className="collection-heading">
                 <h2 id="collection-title" data-reveal>
-                  Not ornaments.
-                  <br />
-                  Reminders.
+                  Objects with <br />
+                  something to carry.
                 </h2>
                 <p data-reveal>
                   Some objects hold more than their shape.
@@ -484,16 +574,24 @@ export default function Experience() {
                 </p>
               </div>
               <div className="gallery-grid">
-                <div className="gallery-art" ref={galleryRef}>
-                  <Image
-                    key={study.image}
-                    src={`/images/${study.image}.webp`}
-                    alt={`${study.name}: ${study.caption} An imagined sculptural relic, shown as an artistic study.`}
-                    fill
-                    sizes="(max-width: 700px) 90vw, 52vw"
-                  />
-                  <span className="gallery-art-label">
-                    STUDY 0{selected + 1} / {study.material}
+                <div className="gallery-stage">
+                  <div className="gallery-art" ref={galleryRef}>
+                    <Image
+                      key={study.image}
+                      src={`/images/${study.image}.webp`}
+                      alt={`${study.name}: ${study.caption} An imagined sculptural relic, shown as an artistic study.`}
+                      fill
+                      sizes="(max-width: 700px) 90vw, 52vw"
+                    />
+                    <span className="gallery-art-label">
+                      STUDY 0{selected + 1} / {study.material}
+                    </span>
+                  </div>
+                  <span className="gallery-ordinal" aria-hidden="true">
+                    0{selected + 1}
+                  </span>
+                  <span className="gallery-edge-note" aria-hidden="true">
+                    THE ATELIER / OBJECT STUDIES
                   </span>
                 </div>
                 <div className="gallery-index">
@@ -513,6 +611,14 @@ export default function Experience() {
                         }
                         aria-pressed={selected === i}
                       >
+                        <span className="study-thumb" aria-hidden="true">
+                          <Image
+                            src={`/images/${item.image}.webp`}
+                            alt=""
+                            fill
+                            sizes="64px"
+                          />
+                        </span>
                         <span className="study-number">0{i + 1}</span>
                         <span className="study-name">
                           {item.name}
@@ -528,16 +634,16 @@ export default function Experience() {
                     <h3>{study.caption}</h3>
                     <p>{study.story}</p>
                   </div>
-                  <a
+                  <OrbitLink
                     href="#forge"
-                    className="text-link"
+                    reducedMotion={reducedMotion}
                     onClick={() => {
                       setIntention(study.id);
                       setSelectionVersion((v) => v + 1);
                     }}
                   >
-                    Make this your own <span aria-hidden="true">↗</span>
-                  </a>
+                    Make this your own
+                  </OrbitLink>
                   <noscript>
                     <div className="nojs-studies">
                       {studies.slice(1).map((item) => (
@@ -562,33 +668,30 @@ export default function Experience() {
               aria-label="The invitation to make"
               data-sc-act="invocation"
             >
-              <div className="invocation-top">
-                <span>III / THE INVITATION</span>
-                <span>THE WORK IS NEVER FINISHED</span>
+              <div className="invitation-orbit" aria-hidden="true">
+                <svg viewBox="0 0 320 320">
+                  <circle cx="160" cy="160" r="145" />
+                  <ellipse
+                    cx="160"
+                    cy="160"
+                    rx="90"
+                    ry="145"
+                    transform="rotate(35 160 160)"
+                  />
+                  <path d="M160 45 260 218H60Z" />
+                  <circle cx="160" cy="160" r="18" />
+                </svg>
               </div>
-              <Emblem className="invocation-emblem" />
-              <p>
-                <span className="invocation-line">
-                  <span>A GOD MADE</span>
-                </span>
-                <span className="invocation-line">
-                  <span>THE FIRST.</span>
-                </span>
-                <span className="invocation-line outlined">
-                  <span>YOU MAKE</span>
-                </span>
-                <span className="invocation-line">
-                  <span>THE NEXT.</span>
-                </span>
+              <span className="bridge-note">
+                The next object has no story. Yet.
+              </span>
+              <p className="invitation-type">
+                <span>Your turn</span>
+                <span>to make.</span>
               </p>
-              <div className="invocation-bottom">
-                <span>
-                  Choose an intention.
-                  <br />
-                  Give it form.
-                </span>
-                <span aria-hidden="true">↓</span>
-              </div>
+              <a className="bridge-link" href="#forge">
+                Take your place at the bench <span aria-hidden="true">↓</span>
+              </a>
             </section>
             <Forge
               selectedIntention={intention}
@@ -605,14 +708,12 @@ export default function Experience() {
                 <span>THE ATELIER REMAINS OPEN</span>
               </div>
               <h2 id="closing-title" data-reveal>
-                Nothing extraordinary
-                <br />
+                Nothing extraordinary <br />
                 begins without a maker.
               </h2>
               <div className="closing-bottom">
                 <p>
-                  An exploration of ancient imagination
-                  <br />
+                  An exploration of ancient imagination <br />
                   and what the web can become.
                 </p>
                 <button
@@ -637,6 +738,9 @@ export default function Experience() {
                   <p className="fine-print">
                     Keep a relic’s link to open it elsewhere. Removing it here
                     does not invalidate its link.
+                  </p>
+                  <p className="collection-notice" role="status">
+                    {collectionNotice}
                   </p>
                   {collection.length === 0 ? (
                     <p>
@@ -666,7 +770,7 @@ export default function Experience() {
             </section>
           </main>
           <footer className="site-footer">
-            <Link href="/" className="footer-wordmark">
+            <Link href="/" className="footer-wordmark" onClick={goHome}>
               HEPHAESTUS
             </Link>
             <div className="footer-bottom">

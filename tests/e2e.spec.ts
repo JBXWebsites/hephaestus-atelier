@@ -186,7 +186,7 @@ test("failed creation preserves choices, retry succeeds and a new choice invalid
   });
   await page.getByRole("button", { name: "Forge my relic" }).click();
   await expect(page.locator(".status.error")).toContainText(
-    "The forge could not complete your request. Your choices are still here.",
+    "We couldn’t reach the forge. Your choices are still here.",
   );
   await expect(page.locator(".forge-summary")).toContainText(
     "Aegis · Silver · Wave",
