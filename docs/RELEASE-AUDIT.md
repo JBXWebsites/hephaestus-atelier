@@ -33,12 +33,21 @@ The desktop experience is approximately 6.5 viewport heights at 1440×1000, shor
 - Narrow closing typography no longer overflows. Solid-header state survives React updates. ScrollSmoother does not recenter section focus after explicit anchor navigation.
 - No-JavaScript phones have useful navigation and static descriptions of all three studies. Shared records have an archival-image fallback and ordinary download link.
 - Material lighting, aged bronze and marks were refined through the 27-variant visual review.
+- Final readability pass raises all small captions and controls to an 11px minimum. At 320px the secondary wordmark subtitle is omitted to keep navigation clear. The updated six-test browser suite and desktop/mobile scene sweep pass.
 
 ## Hosting
 
 - GitHub: https://github.com/JBXWebsites/hephaestus-atelier
 - Vercel project: hephaestus-atelier, linked to that repository's main branch, Node.js 24, public deployment protection setting, automatic Git deployments enabled.
-- Public URL and final production measurement will be recorded after the initial deployment is verified.
+- Public URL: https://hephaestus-atelier.vercel.app
+- Initial Git push `47c7436` automatically created production deployment `dpl_Aoz9RXJLykkNQVikEv44BT8ajd26`, which reached READY. GitHub reports a successful Vercel status. No authentication is needed to use the public alias.
+- All six browser tests passed again against the public alias, including actual server creation, a fresh browser's shared record and SVG download. The independent public review found zero axe violations on home, credits and a newly created record, and verified normal-motion navigation and keyboard copy.
+
+## Performance measurement
+
+Lighthouse 13.6.0, Chrome headless, standard simulated mobile settings, public production alias. Scores: **performance 97, accessibility 100, best practices 100, SEO 100**. First contentful paint 0.9s, largest contentful paint 2.6s, total blocking time 20ms, cumulative layout shift 0, speed index 1.4s. Local baseline was 93/100/100/100 with 3.2s LCP.
+
+These are individual lab runs, not field guarantees. Production LCP is slightly above the blueprint's aspirational 2.5s target. Remaining audit opportunities concern approximately 20KiB unused JavaScript, 14KiB legacy compatibility code and 17KiB image savings; they are documented rather than claiming every possible optimization is complete. Core content, controls and measured layout stability are sound. A final caption readability adjustment follows this measurement; it does not change the media or runtime architecture.
 
 ## Scope and practical limits
 

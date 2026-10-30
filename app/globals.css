@@ -109,7 +109,7 @@ summary {
   display: flex;
   justify-content: space-between;
   gap: 24px;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.12em;
   line-height: 1.5;
   margin-bottom: 72px;
@@ -118,7 +118,7 @@ summary {
   white-space: nowrap;
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.16em;
 }
 .button {
@@ -206,7 +206,7 @@ summary {
 .brand small {
   display: block;
   font-family: var(--font-body), sans-serif;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.23em;
   margin-top: 1px;
 }
@@ -322,7 +322,7 @@ summary {
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.12em;
 }
 .scroll-cue {
@@ -343,7 +343,7 @@ summary {
 .hero-footer > p {
   margin-left: auto;
   text-align: right;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.1em;
 }
 .hero-footer p span {
@@ -358,7 +358,7 @@ summary {
   position: absolute;
   right: -27px;
   bottom: 130px;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.14em;
 }
 .maker {
@@ -389,7 +389,7 @@ summary {
   bottom: 24px;
   left: 24px;
   color: #eee9df;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.14em;
 }
 .maker-copy {
@@ -450,7 +450,7 @@ summary {
   margin-top: 72px;
   border-top: 1px solid #4d564533;
   padding-top: 20px;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.11em;
 }
 .maker-footnote span {
@@ -508,7 +508,7 @@ summary {
   bottom: 22px;
   left: 24px;
   z-index: 1;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.14em;
 }
 .gallery-index {
@@ -531,7 +531,7 @@ summary {
   color: var(--ink);
 }
 .study-number {
-  font-size: 10px;
+  font-size: 11px;
   align-self: flex-start;
   padding-top: 8px;
 }
@@ -543,7 +543,7 @@ summary {
 .study-name small {
   display: block;
   font-family: var(--font-body), sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.035em;
   margin-top: 9px;
 }
@@ -577,7 +577,7 @@ summary {
   margin-top: 14px;
 }
 .art-note {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
   margin-top: 22px;
 }
@@ -591,7 +591,7 @@ summary {
 .invocation-top {
   display: flex;
   justify-content: space-between;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.13em;
   margin-bottom: 58px;
 }
@@ -682,7 +682,7 @@ summary {
   font-size: 27px;
 }
 .object-heading > span:last-child {
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.12em;
   color: var(--muted);
 }
@@ -712,7 +712,7 @@ legend {
 }
 legend > span {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
   padding-top: 3px;
 }
 .choices {
@@ -788,7 +788,7 @@ legend > span {
   font-size: 11px;
 }
 .forge-summary > span {
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--muted);
 }
@@ -799,7 +799,7 @@ legend > span {
   width: 100%;
 }
 .fine-print {
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.8;
   color: var(--muted);
   margin-top: 12px;
@@ -827,7 +827,7 @@ legend > span {
   border-top: 1px solid var(--line);
 }
 .result-label {
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.15em;
   color: var(--ember);
 }
@@ -881,7 +881,7 @@ legend > span {
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
   margin-top: 12px;
 }
@@ -900,11 +900,11 @@ legend > span {
   border-color: var(--paper);
 }
 .relic-scene-hint {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
 }
 .relic-scene-status {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
 }
 .closing {
@@ -917,7 +917,7 @@ legend > span {
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   margin-bottom: 52px;
 }
@@ -997,7 +997,7 @@ legend > span {
   justify-content: space-between;
   align-items: center;
   gap: 30px;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   padding-top: 25px;
   color: var(--muted);
@@ -1009,7 +1009,7 @@ legend > span {
 }
 .footer-bottom a,
 .footer-bottom button {
-  font-size: 10px;
+  font-size: 11px;
   min-height: 44px;
   display: flex;
   align-items: center;
@@ -1099,7 +1099,7 @@ legend > span {
   border-bottom: 1px solid var(--line);
 }
 .record-choices dt {
-  font-size: 9px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--muted);
@@ -1109,7 +1109,7 @@ legend > span {
   font-size: 14px;
 }
 .record-meta {
-  font-size: 10px !important;
+  font-size: 11px !important;
   overflow-wrap: anywhere;
   line-height: 1.9;
   margin: 30px 0;
@@ -1212,7 +1212,7 @@ legend > span {
     font-size: 13px;
   }
   .maker-footnote {
-    font-size: 8px;
+    font-size: 11px;
   }
   .gallery-grid {
     gap: 45px;
@@ -1234,10 +1234,10 @@ legend > span {
   }
   .choice {
     padding: 10px 9px;
-    font-size: 10px;
+    font-size: 11px;
   }
   .object-heading > span:last-child {
-    font-size: 8px;
+    font-size: 11px;
   }
   .footer-bottom {
     flex-wrap: wrap;
@@ -1257,7 +1257,7 @@ legend > span {
   .section-top > span:last-child {
     max-width: 230px;
     text-align: right;
-    font-size: 8px;
+    font-size: 11px;
   }
   .desktop-nav {
     display: none;
@@ -1397,10 +1397,10 @@ legend > span {
     letter-spacing: 0.09em;
   }
   .brand small {
-    font-size: 6px;
+    font-size: 11px;
   }
   .header-cta {
-    font-size: 10px;
+    font-size: 11px;
     gap: 12px;
   }
   .header-cta > span {
@@ -1408,7 +1408,7 @@ legend > span {
   }
   .menu-toggle {
     display: block;
-    font-size: 10px;
+    font-size: 11px;
     min-height: 44px;
     padding: 8px 0;
   }
@@ -1463,7 +1463,7 @@ legend > span {
     padding-bottom: 130px;
   }
   .hero .eyebrow {
-    font-size: 8px;
+    font-size: 11px;
     letter-spacing: 0.12em;
     margin-bottom: 27px;
     gap: 9px;
@@ -1492,7 +1492,7 @@ legend > span {
   .hero-footer {
     bottom: 24px;
     gap: 16px;
-    font-size: 7px;
+    font-size: 11px;
     letter-spacing: 0.08em;
   }
   .scroll-cue {
@@ -1504,10 +1504,10 @@ legend > span {
     font-size: 16px;
   }
   .hero-footer > p {
-    font-size: 8px;
+    font-size: 11px;
   }
   .hero-footer p span {
-    font-size: 9px;
+    font-size: 11px;
   }
   .hero-edition {
     display: none;
@@ -1517,7 +1517,7 @@ legend > span {
     padding-bottom: 62px;
   }
   .section-top {
-    font-size: 9px;
+    font-size: 11px;
     margin-bottom: 38px;
   }
   .section-top > span:last-child {
@@ -1562,7 +1562,7 @@ legend > span {
   }
   .maker-footnote {
     margin-top: 40px;
-    font-size: 8px;
+    font-size: 11px;
   }
   .collection-heading {
     display: block;
@@ -1600,7 +1600,7 @@ legend > span {
     gap: 18px;
   }
   .study-name small {
-    font-size: 10px;
+    font-size: 11px;
     margin: 0;
   }
   .study-number {
@@ -1618,14 +1618,14 @@ legend > span {
     max-width: 340px;
   }
   .art-note {
-    font-size: 9px;
+    font-size: 11px;
   }
   .invocation {
     padding-top: 25px;
     padding-bottom: 24px;
   }
   .invocation-top {
-    font-size: 8px;
+    font-size: 11px;
     margin-bottom: 50px;
   }
   .invocation-top > span:last-child {
@@ -1651,7 +1651,7 @@ legend > span {
     top: 24%;
   }
   .invocation-bottom {
-    font-size: 10px;
+    font-size: 11px;
     margin-top: 44px;
   }
   .invocation-bottom > span:last-child {
@@ -1679,13 +1679,13 @@ legend > span {
     font-size: 25px;
   }
   .object-heading > span:last-child {
-    font-size: 8px;
+    font-size: 11px;
   }
   .relic-scene-caption {
     gap: 10px;
   }
   .relic-scene-hint {
-    font-size: 9px;
+    font-size: 11px;
   }
   .relic-scene-control {
     padding: 7px 10px;
@@ -1702,13 +1702,13 @@ legend > span {
     gap: 8px;
   }
   .forge-summary {
-    font-size: 10px;
+    font-size: 11px;
   }
   .forge-summary p {
-    font-size: 10px;
+    font-size: 11px;
   }
   .closing-top {
-    font-size: 8px;
+    font-size: 11px;
     margin-bottom: 36px;
   }
   .closing h2 {
@@ -1738,7 +1738,7 @@ legend > span {
   }
   .footer-bottom {
     display: block;
-    font-size: 8px;
+    font-size: 11px;
     padding-top: 18px;
   }
   .footer-bottom > div {
@@ -1753,7 +1753,7 @@ legend > span {
     padding: 20px var(--gutter);
   }
   .simple-header > a:last-child {
-    font-size: 10px;
+    font-size: 11px;
   }
   .credits-page {
     padding-top: 55px;
@@ -1777,7 +1777,7 @@ legend > span {
     font-size: 14px;
   }
   .record-meta {
-    font-size: 9px !important;
+    font-size: 11px !important;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1788,6 +1788,14 @@ legend > span {
   }
   .hero-art {
     transform: none !important;
+  }
+}
+@media (max-width: 360px) {
+  .brand small {
+    display: none;
+  }
+  .header-cta {
+    white-space: nowrap;
   }
 }
 /* Review refinements: readable hero actions and narrow-screen word wrapping. */

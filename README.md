@@ -2,6 +2,8 @@
 
 A cinematic Greek mythology portfolio experience by **JBX Web Studio**. Enter the workshop of Hephaestus, explore three imagined relics, and forge an original digital object from an intention, material, and maker's mark.
 
+**Live:** https://hephaestus-atelier.vercel.app · **Repository:** https://github.com/JBXWebsites/hephaestus-atelier
+
 ## Run locally
 
 Requires Node.js 22 or 24.

@@ -28,9 +28,9 @@ changes only grammar and world will fail it.
 
 | Build | Grammar | Nav treatment | Hero device | Act-sequence shape | Close pattern | Signature move | World | Port |
 |---|---|---|---|---|---|---|---|---|
+| Hephaestus — The Divine Atelier | Exhibition-to-workbench | Split wordmark / centered chapter links / direct forge action; compact phone disclosure | Monumental sculptural portrait with live inscription | Six scenes: awe → maker → collection → invitation → interactive forge → possession; ~6.5 desktop viewports | Quiet maker statement, device-local collection and colophon | An open orbit seals around the visitor's chosen form, material and engraved mark | Volcanic divine atelier, limestone / soot-green / aged metal / ember | 3000; hephaestus-atelier.vercel.app |
 
-*(empty: your first build has nothing to clear, so build whatever the interview
-points at. From the second onwards, this table is the constraint.)*
+First entry: no prior local builds to compare. Subsequent builds must clear the four-dimension gate against this row.
 
 ---
 
@@ -41,7 +41,7 @@ reusing: a grammar, a nav treatment, a close pattern, a signature move, an
 act-count-and-length band. The shared columns are what the next build inherits
 as a constraint, so writing them down is the whole point.
 
-Nothing is taken yet.
+- Hephaestus claims the six-scene exhibition-to-workbench journey, monumental maker portrait, visitor-authored relic with closing orbit, and device-local collection close. Shipped 2026-10-29.
 
 ---
 

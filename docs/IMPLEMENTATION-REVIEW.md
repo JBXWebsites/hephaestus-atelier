@@ -124,3 +124,14 @@ Verified the subsequent local production build on 2026-10-30 UTC using installed
 - **Semantics and axe:** home, credits, and a newly created record each contain one H1 and one main landmark. The previously flagged footnote contrast and reset-button name pass. The only axe finding remaining in the served build is the brand link's label-in-name mismatch on all three routes.
 
 **Residual action before release:** rebuild and rerun the three-route axe scan after the already prepared source fixes removing brand aria-label overrides and reveal opacity. Those two source changes were not present in the build checked here. The newly prepared dedicated mobile hero crop also postdates these captures; verify its rendered mobile framing after rebuilding. No further actionable defect was reproduced in the completed checks.
+
+## Final public verification
+
+Verified `https://hephaestus-atelier.vercel.app` on 2026-10-30 UTC in installed Chrome with normal motion enabled. The pending checks above are now resolved:
+
+- Full-page axe scans returned **zero violations** on the homepage, credits page, and a newly created Nostos record. Each route has one H1 and one main landmark; the previous brand-label and contrast findings no longer appear.
+- At 1440 × 1000, ordinary header navigation followed by real wheel scrolling and the gallery CTA selected Nostos and landed the forge at approximately **83.5px** from the top.
+- Clicking the actual forge button returned **HTTP 201** and produced the Nostos record. Keyboard activation of Copy link retained focus on “Link copied”; the result remained at opacity 1 with an identity transform, with no entrance replay.
+- Captured and visually inspected the public hero at **390 × 844**. The browser selected `/images/hero-mobile.webp` at its natural **560 × 1024** size. The sculpture, headline, supporting copy, CTA, and footer cue fit the viewport without measured horizontal overflow or observed clipping.
+
+**Residual actionable findings from this final pass: none.** Automated accessibility checks supplement the manual interaction and visual checks above; this is not a claim of complete accessibility certification or actual-device coverage.
